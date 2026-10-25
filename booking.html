@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking VIP - Bengkel Jaya Motor</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#121212">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-container">
+            <a href="/index.html" class="back-link">←</a>
+            <span class="logo-text">VIP BOOKING SERVICE</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <form id="vipBookingForm" class="luxury-form">
+            <div class="form-group">
+                <label>Nama Pelanggan</label>
+                <input type="text" id="nama" placeholder="Contoh: Alexander" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nomor Polisi</label>
+                <input type="text" id="nopol" placeholder="Contoh: B 8888 JAYA" required>
+            </div>
+
+            <div class="form-group">
+                <label>Model / Tipe Motor</label>
+                <input type="text" id="motor" placeholder="Contoh: Honda PCX 160" required>
+            </div>
+
+            <div class="form-group">
+                <label>Pilih Layanan Utama</label>
+                <select id="servis" required>
+                    <option value="Tune Up Injeksi Premium">Tune Up Injeksi Premium - Rp 85.000</option>
+                    <option value="Servis CVT & Ganti Oli">Servis CVT & Ganti Oli - Rp 120.000</option>
+                    <option value="Overhaul / Turun Mesin">Overhaul / Turun Mesin - Rp 350.000</option>
+                    <option value="Full Detailing & Checkup">Full Detailing & Checkup - Rp 150.000</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Pilih Master Mekanik</label>
+                <select id="mekanik">
+                    <option value="Budi (Senior Chief Mechanic)">Budi (Senior Chief Mechanic)</option>
+                    <option value="Joko (Engine Specialist)">Joko (Engine Specialist)</option>
+                    <option value="Agus (CVT & Electrical Expert)">Agus (CVT & Electrical Expert)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-full">Kirim Invoice ke WhatsApp VIP</button>
+        </form>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="/index.html" class="nav-item">🏠<span>Home</span></a>
+        <a href="/booking.html" class="nav-item active">📅<span>Booking</span></a>
+        <a href="/katalog.html" class="nav-item">📦<span>Katalog</span></a>
+        <a href="/status.html" class="nav-item">🔍<span>Status</span></a>
+    </nav>
+
+    <script>
+        document.getElementById('vipBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const nopol = document.getElementById('nopol').value;
+            const motor = document.getElementById('motor').value;
+            const servis = document.getElementById('servis').value;
+            const mekanik = document.getElementById('mekanik').value;
+
+            const nomorAdmin = "6281234567890"; // Ganti nomor WhatsApp admin
+            const pesan = `*INVOICE BOOKING VIP - JAYA MOTOR*%0A%0A*Nama:* ${nama}%0A*No. Polisi:* ${nopol}%0A*Motor:* ${motor}%0A*Layanan:* ${servis}%0A*Mekanik:* ${mekanik}%0A%0AMohon dipersiapkan slot VIP-nya. Terima kasih!`;
+
+            window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
+        });
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+  </html>
