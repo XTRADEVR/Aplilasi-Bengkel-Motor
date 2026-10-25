@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Sparepart - Bengkel Jaya Motor</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#121212">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-container">
+            <a href="/index.html" class="back-link">←</a>
+            <span class="logo-text">KATALOG SPAREPART</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Filter Kategori -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterKatalog('Semua')">Semua</button>
+            <button class="filter-btn" onclick="filterKatalog('Oli')">Oli</button>
+            <button class="filter-btn" onclick="filterKatalog('Sparepart')">Sparepart</button>
+            <button class="filter-btn" onclick="filterKatalog('Jasa')">Jasa</button>
+        </div>
+
+        <div id="katalog-grid" class="luxury-grid">
+            <p class="loading-text">Memuat inventaris premium...</p>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="/index.html" class="nav-item">🏠<span>Home</span></a>
+        <a href="/booking.html" class="nav-item">📅<span>Booking</span></a>
+        <a href="/katalog.html" class="nav-item active">📦<span>Katalog</span></a>
+        <a href="/status.html" class="nav-item">🔍<span>Status</span></a>
+    </nav>
+
+    <script>
+        let semuaDataKatalog = [];
+
+        fetch('/data/katalog.json')
+            .then(res => res.json())
+            .then(data => {
+                semuaDataKatalog = data;
+                renderKatalog(data);
+            })
+            .catch(() => {
+                document.getElementById('katalog-grid').innerHTML = '<p>Gagal memuat katalog.</p>';
+            });
+
+        function renderKatalog(data) {
+            const grid = document.getElementById('katalog-grid');
+            grid.innerHTML = '';
+            data.forEach(item => {
+                grid.innerHTML += `
+                    <div class="luxury-card">
+                        <div class="card-header-row">
+                            <span class="badge-kategori">${item.kategori}</span>
+                            <span class="stock-status">Stok Ready</span>
+                        </div>
+                        <h4>${item.item}</h4>
+                        <div class="card-footer-row">
+                            <span class="harga">Rp ${item.harga.toLocaleString('id-ID')}</span>
+                            <button class="btn-sm-gold" onclick="tambahKeranjang('${item.item}', ${item.harga})">Pesan</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterKatalog(kategori) {
+            // Ubah tombol aktif
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if(kategori === 'Semua') {
+                renderKatalog(semuaDataKatalog);
+            } else {
+                const filtered = semuaDataKatalog.filter(item => item.kategori === kategori);
+                renderKatalog(filtered);
+            }
+        }
+
+        function tambahKeranjang(nama, harga) {
+            alert(`Item "${nama}" berhasil dipilih! Silakan lanjutkan booking untuk pemasangan.`);
+            window.location.href = '/booking.html';
+        }
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+          </html>
