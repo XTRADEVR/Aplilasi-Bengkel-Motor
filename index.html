@@ -74,22 +74,12 @@
 
     <!-- Floating Bottom Navigation -->
     <nav class="bottom-nav">
-        <a href="/index.html" class="nav-item active">🏠<span>Home</span></a>
-        <a href="/booking.html" class="nav-item">📅<span>Booking</span></a>
-        <a href="/katalog.html" class="nav-item">📦<span>Katalog</span></a>
-        <a href="/status.html" class="nav-item">🔍<span>Status</span></a>
-    </nav>
+    <a href="index.html" class="nav-item active">🏠 Home</a>
+    <a href="booking.html" class="nav-item">📅 Booking</a>
+    <a href="katalog.html" class="nav-item">📦 Katalog</a>
+    <a href="status.html" class="nav-item">🔍 Status</a>
+</nav>
 
-    <script src="/js/app.js"></script>
-    <script>
-        // Auto slide testimonial sederhana
-        let currentTesti = 0;
-        const testCards = document.querySelectorAll('.testi-card');
-        setInterval(() => {
-            testCards[currentTesti].classList.remove('active');
-            currentTesti = (currentTesti + 1) % testCards.length;
-            testCards[currentTesti].classList.add('active');
-        }, 4000);
-    </script>
+<script src="app.js"></script>
 </body>
 </html>
