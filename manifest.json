@@ -1,0 +1,24 @@
+{
+  "name": "Bengkel Jaya Motor Premium",
+  "short_name": "Jaya Motor VIP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "orientation": "portrait",
+  "description": "Aplikasi booking servis VIP, katalog sparepart original, dan pelacakan status motor real-time.",
+  "icons": [
+    {
+      "src": "/images/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
