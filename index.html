@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengkel Jaya Motor - Premium Service</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#121212">
+    <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-container">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">JAYA MOTOR <small>PREMIUM</small></span>
+        </div>
+        <div class="header-badge">VIP Authorized</div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Banner -->
+        <section class="hero-luxury">
+            <div class="hero-content">
+                <span class="tag-gold">ELEVATE YOUR RIDE</span>
+                <h1>Servis Kelas Dunia Untuk Motor Kesayangan</h1>
+                <p>Nikmati perawatan mesin presisi tinggi dengan mekanik bersertifikat dan suku cadang original.</p>
+                <div class="hero-actions">
+                    <a href="/booking.html" class="btn btn-gold">🚀 Booking VIP</a>
+                    <a href="/katalog.html" class="btn btn-glass">📦 Katalog Sparepart</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats / Feature Highlights -->
+        <section class="grid-stats">
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>Original Parts</p>
+            </div>
+            <div class="stat-card">
+                <h3>VIP</h3>
+                <p>Layanan Booking</p>
+            </div>
+            <div class="stat-card">
+                <h3>5 ★</h3>
+                <p>Trusted Service</p>
+            </div>
+        </section>
+
+        <!-- Testimoni Pelanggan Premium -->
+        <section class="section-block">
+            <h3 class="section-title">⭐ Testimoni VIP</h3>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testi-card active">
+                    <p class="testi-text">"Pelayanan luar biasa! Motor matic saya jadi sangat responsif setelah tune-up di Jaya Motor. Tempatnya juga sangat bersih dan elegan."</p>
+                    <div class="testi-author">
+                        <strong>Rian Mahendra</strong>
+                        <span>Yamaha NMAX 2023</span>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <p class="testi-text">"Booking lewat web tanpa antre. Ganti oli dan cek CVT transparan harganya. Recommended banget buat motor sport!"</p>
+                    <div class="testi-author">
+                        <strong>Dimas Anggara</strong>
+                        <span>Honda CBR 250R</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="/index.html" class="nav-item active">🏠<span>Home</span></a>
+        <a href="/booking.html" class="nav-item">📅<span>Booking</span></a>
+        <a href="/katalog.html" class="nav-item">📦<span>Katalog</span></a>
+        <a href="/status.html" class="nav-item">🔍<span>Status</span></a>
+    </nav>
+
+    <script src="/js/app.js"></script>
+    <script>
+        // Auto slide testimonial sederhana
+        let currentTesti = 0;
+        const testCards = document.querySelectorAll('.testi-card');
+        setInterval(() => {
+            testCards[currentTesti].classList.remove('active');
+            currentTesti = (currentTesti + 1) % testCards.length;
+            testCards[currentTesti].classList.add('active');
+        }, 4000);
+    </script>
+</body>
+</html>
