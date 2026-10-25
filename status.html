@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Status Servis - Bengkel Jaya Motor</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#121212">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-container">
+            <a href="/index.html" class="back-link">←</a>
+            <span class="logo-text">STATUS SERVIS VIP</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="luxury-form">
+            <h3>Lacak Pengerjaan Motor</h3>
+            <p class="subtitle">Masukkan nomor polisi motor Anda untuk melihat status real-time.</p>
+            <div class="form-group">
+                <input type="text" id="cariNopol" placeholder="Contoh: B 1234 ABC">
+            </div>
+            <button onclick="cekStatus()" class="btn btn-gold btn-full">Cek Status Sekarang</button>
+        </div>
+
+        <div id="hasilStatus" class="status-result-box" style="display: none;">
+            <h4>Hasil Pelacakan: <span id="resNopol" style="color:var(--gold);"></span></h4>
+            <div class="progress-container">
+                <div class="step completed" id="step1">1. Antrean</div>
+                <div class="step" id="step2">2. Dikerjakan</div>
+                <div class="step" id="step3">3. Selesai</div>
+            </div>
+            <p id="keteranganStatus" style="text-align: center; margin-top: 15px; font-weight: 500;"></p>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="/index.html" class="nav-item">🏠<span>Home</span></a>
+        <a href="/booking.html" class="nav-item">📅<span>Booking</span></a>
+        <a href="/katalog.html" class="nav-item">📦<span>Katalog</span></a>
+        <a href="/status.html" class="nav-item active">🔍<span>Status</span></a>
+    </nav>
+
+    <script>
+        function cekStatus() {
+            const nopol = document.getElementById('cariNopol').value.trim();
+            const box = document.getElementById('hasilStatus');
+            if(!nopol) {
+                alert('Masukkan nomor polisi terlebih dahulu!');
+                return;
+            }
+
+            box.style.display = 'block';
+            document.getElementById('resNopol').innerText = nopol.toUpperCase();
+
+            // Simulasi status acak demo untuk klien
+            const statusRandom = Math.floor(Math.random() * 3) + 1;
+            const s1 = document.getElementById('step1');
+            const s2 = document.getElementById('step2');
+            const s3 = document.getElementById('step3');
+            const ket = document.getElementById('keteranganStatus');
+
+            s1.className = "step completed";
+            s2.className = "step";
+            s3.className = "step";
+
+            if(statusRandom === 1) {
+                s2.className = "step active-step";
+                ket.innerText = "Motor Anda sedang dalam antrean pemeriksaan mekanik chief.";
+            } else if(statusRandom === 2) {
+                s1.className = "step completed";
+                s2.className = "step completed";
+                s3.className = "step active-step";
+                ket.innerText = "Motor sedang dalam proses pengerjaan / tune-up.";
+            } else {
+                s1.className = "step completed";
+                s2.className = "step completed";
+                s3.className = "step completed";
+                ket.innerText = "Pengerjaan Selesai! Motor siap diambil di pit VIP bengkel.";
+            }
+        }
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+  </html>
